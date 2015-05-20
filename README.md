@@ -29,8 +29,6 @@ Cordova项目的创建和插件的安装基于[Cordova CLI](http://cordova.apach
 ## 测试
 将刚才创建的项目导入Eclipse中，就可以在模拟器或者Android设备上运行并测试AnySDK的功能。上面的安装步骤3已经把自动化测试工程和AnySDK接口的使用范例安装到你的项目中。可以参考这些范例，来学习如何调用AnySDK的JavaScript接口。
 
-## 安装AnySDK插件后的Cordova安卓应用Sample
-https://bitbucket.org/wenxizhu/anysdk-cordova-plugin-sample
 
 ## Introduction 
 This plugin is for Cordova app to access the AnySDK service. It wraps the AnySDK's Java APIs, and exposes JavaScript APIs to Cordova developers.
