@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.anysdk"
+    version="0.0.1">
+    <name></name>
+    <description>AnySDK Cordova Plugin</description>
+    <keywords>anysdk, mobile</keywords>
+    <author>Wenxi Zhu</author>
+
+    <js-module src="www/anysdk.js">
+    	<clobbers target="anysdk" />
+    </js-module>
+
+    <platform name="android">
+        <preference name="ANYSDK_APPKEY" />
+        <preference name="ANYSDK_APPSECRET" />
+        <preference name="ANYSDK_PRIVATEKEY" />
+        <preference name="ANYSDK_OAUTHSERVER" />
+
+    	<config-file target="res/xml/config.xml" parent="/*">
+    		<feature name="AnySDK">
+    			<param name="android-package" value="com.anysdk.AnySDKPlugin" />
+                <param name="onload" value="true" />
+    		</feature>
+    	</config-file>
+
+    	<config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+            <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+            <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data android:name="com.anysdk.appkey" android:value="$ANYSDK_APPKEY"></meta-data>
+            <meta-data android:name="com.anysdk.appsecret" android:value="$ANYSDK_APPSECRET"></meta-data>
+            <meta-data android:name="com.anysdk.privatekey" android:value="$ANYSDK_PRIVATEKEY"></meta-data>
+            <meta-data android:name="com.anysdk.oauthserver" android:value="$ANYSDK_OAUTHSERVER"></meta-data>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19" />
+        </config-file>
+
+        <source-file src="src/android/AnySDKPlugin.java" target-dir="src/com/anysdk"></source-file>
+
+        <framework src="src/android/libAnySDK" custom="true"></framework>
+    </platform>
+</plugin>
