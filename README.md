@@ -21,16 +21,14 @@ Cordova项目的创建和插件的安装基于[Cordova CLI](http://cordova.apach
 1. 创建空项目：运行`cordova create <folder-name> <package-name> <project-name>` ，其中，folder-name用来指定项目文件名；package-name用来指定包名；project-name用来指定项目名。
 例如：`cordova create AnySDKCordovaPluginSample com.intel.anysdkplugin AnySDK-Cordova-Plugin-Sample`
 2. 添加平台：`cordova platform add android`。目前该插件只支持Android平台。
-3. 将AnySDK-Cordova-Plugin中"tests"目录下的文件复制到刚才创建的Cordova项目的“www”目录下：“tests”目录中保存了用于测试AnySDK插件JavaScript接口的用例。
+3. 将AnySDK-Cordova-Plugin中"test"目录下的文件复制到刚才创建的Cordova项目的“www”目录下：“test”目录中保存了用于测试AnySDK插件JavaScript接口的用例。
 4. Build项目：命令行cd到Cordova项目的根目录，运行`cordova build`。
 5. 安装AnySDK插件: 运行`plugman install --platform android --project <dir-to-project>/platforms/android --plugin <dir-to-AnySDK-plugin> --variable ANYSDK_APPKEY=<ANYSDK_APPKEY> --variable ANYSDK_APPSECRET=<ANYSDK_APPSECRET> --variable ANYSDK_PRIVATEKEY=<ANYSDK_PRIVATEKEY> --variable ANYSDK_OAUTHSERVER=<ANYSDK_OAUTHSERVER>`, 安装插件。
 例如：`plugman install --platform android --project platforms/android/ --plugin ../AnySDK-Cordova-Plugin/ --variable ANYSDK_APPKEY="aa" --variable ANYSDK_APPSECRET="bb" --variable ANYSDK_PRIVATEKEY="cc" --variable ANYSDK_OAUTHSERVER="dd"`
 
 ## 测试
-将刚才创建的项目导入Eclipse中，就可以在模拟器或者Android设备上运行并测试AnySDK的功能。
+将刚才创建的项目导入Eclipse中，就可以在模拟器或者Android设备上运行并测试AnySDK的功能。上面的安装步骤3已经把自动化测试工程和AnySDK接口的使用范例安装到你的项目中。可以参考这些范例，来学习如何调用AnySDK的JavaScript接口。
 
-## 安装AnySDK插件后的Cordova安卓应用Sample
-https://bitbucket.org/wenxizhu/anysdk-cordova-plugin-sample
 
 ## Introduction 
 This plugin is for Cordova app to access the AnySDK service. It wraps the AnySDK's Java APIs, and exposes JavaScript APIs to Cordova developers.

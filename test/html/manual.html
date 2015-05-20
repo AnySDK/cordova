@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="../css/index.css" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <title>Manual Test</title>
+    </head>
+    <body>
+        <div class="login">
+            <div>Login (鐢ㄦ埛鐧诲綍鎺ュ彛):</div>
+            <button onclick="login()">Login</button>
+            <button onclick="logout()">Logout</button>
+            <button onclick="isLogined()">isLogined</button>
+            <button onclick="getUserID()">getUserID</button>
+            <button onclick="enterPlatform()">enterPlatform</button>
+            <button onclick="showToolBar()">showToolBar</button>
+            <button onclick="hideToolBar()">hideToolBar</button>
+            <button onclick="accountSwitch()">accountSwitch</button>
+            <button onclick="exit()">exit</button>
+            <button onclick="realNameRegister()">realNameRegister</button>
+            <button onclick="antiAddictionQuery()">antiAddictionQuery</button>
+            <button onclick="submitLoginGameRole()">submitLoginGameRole</button>
+        </div>
+        <div class="payment">
+            <div>Payment (鏀粯鎺ュ彛):</div>
+            <button onclick="payForProduct()">payForProduct</button>
+            <button onclick="getOrderId()">getOrderId</button>
+        </div>
+        <div class="statistic">
+            <div>Login (缁熻鐧诲綍):</div>
+            <button onclick="logEvent()">logEvent</button>
+            <button onclick="setSessionContinueMillis()">setSessionContinueMillis</button>
+            <button onclick="setCaptureUncaughtException()">setCaptureUncaughtException</button>
+            <button onclick="logError()">logError</button>
+            <button onclick="setAccount()">setAccount</button>
+            <button onclick="onChargeRequest()">onChargeRequest</button>
+            <button onclick="onChargeSuccess()">onChargeSuccess</button>
+            <button onclick="onChargeFail()">onChargeFail</button>
+            <button onclick="onChargeOnlySuccess()">onChargeOnlySuccess</button>
+            <button onclick="onPurchase()">onPurchase</button>
+            <button onclick="onUse()">onUse</button>
+            <button onclick="onReward()">onReward</button>
+            <button onclick="startLevel()">startLevel</button>
+            <button onclick="finishLevel()">finishLevel</button>
+            <button onclick="failLevel()">failLevel</button>
+            <button onclick="startTask()">startTask</button>
+            <button onclick="finishTask()">finishTask</button>
+            <button onclick="failTask()">failTask</button>
+        </div>
+        <div class="share">
+            <div>Sharing (鍒嗕韩鎺ュ彛):</div>
+            <button onclick="share()">share</button>
+        </div>
+        <div class="ads">
+            <div>Ads (骞垮憡鎺ュ彛):</div>
+            <button onclick="isAdTypeSupported()">isAdTypeSupported</button>
+            <button onclick="preloadAds()">preloadAds</button>
+            <button onclick="showAds()">showAds</button>
+            <button onclick="hideAds()">hideAds</button>
+            <button onclick="queryPoints()">queryPoints</button>
+            <button onclick="spendPoints()">spendPoints</button>
+        </div>
+        <div class="push">
+            <div>Push (鎺ㄩ�鎺ュ彛):</div>
+            <button onclick="startPush()">startPush</button>
+            <button onclick="closePush()">closePush</button>
+            <button onclick="setAlias()">setAlias</button>
+            <button onclick="delAlias()">delAlias</button>
+            <button onclick="setTags()">setTags</button>
+            <button onclick="delTags()">delTags</button>
+        </div>
+        <div class="social">
+            <div>SNS (绀句氦鍒嗕韩鎺ュ彛):</div>
+            <button onclick="submitScore()">submitScore</button>
+            <button onclick="showLeaderboard()">showLeaderboard</button>
+            <button onclick="unlockAchievement()">unlockAchievement</button>
+            <button onclick="showAchievements()">showAchievements</button>
+        </div>
+        
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+            
+            function login(id) {
+                anysdk.login(id);
+                document.addEventListener('anysdk.login.success', function () {
+                    alert('login success');
+                }, false);
+
+                document.addEventListener('anysdk.login.timeout', function () {
+                    alert('login timeout');
+                }, false);
+
+                document.addEventListener('anysdk.login.fail', function () {
+                    alert('login fail');
+                }, false);
+            }
+            
+            function logout() {
+                anysdk.logout();
+            }
+            
+            function isLogined() {
+                anysdk.isLogined(function(){
+                    alert('logined.');
+                }, function (){
+                    alert('not logined.');
+                });
+            }
+            
+            function getUserID() {
+                anysdk.getUserID(function(id) {
+                    alert(id);
+                }, function(e) {
+                    alert(e);
+                });
+            }
+            
+            function enterPlatform() {
+                anysdk.enterPlatform();
+            }
+            
+            function showToolBar() {
+                anysdk.showToolBar("topleft");
+                
+                setTimeout(function() {
+                    hideToolBar();
+                }, 5000);
+            }
+            
+            function hideToolBar() {
+                anysdk.hideToolBar();
+            }
+            
+            function accountSwitch() {
+                anysdk.accountSwitch();
+            }
+            
+            function exit() {
+                anysdk.exit();
+            }
+            
+            function realNameRegister() {
+                anysdk.realNameRegister();
+            }
+            
+            function antiAddictionQuery() {
+                anysdk.antiAddictionQuery();
+            }
+            
+            function submitLoginGameRole() {
+                var data = {
+                    roleId: "123456",
+                    roleName: "test"
+                };
+                
+                anysdk.submitLoginGameRole(data);
+            }
+            
+            function payForProduct() {
+                var data = {
+                    roleId: "123456",
+                    roleName: "test"
+                };
+                
+                anysdk.payForProduct(0, data);
+
+                document.addEventListener('anysdk.payment.success', function () {
+                    alert('payment success');
+                }, false);
+
+                document.addEventListener('anysdk.payment.fail', function () {
+                    alert('payment fail');
+                }, false);
+            }
+            
+            function getOrderId() {
+                anysdk.getOrderId(function(id){
+                    alert(id);
+                }, function(e){
+                    alert(e);
+                }, "abcd");
+            }
+            
+            // Analytics
+            function logEvent() {
+                anysdk.logEvent("intel.xdk.anysdk.zwx", {
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+            
+            function setSessionContinueMillis() {
+                anysdk.setSessionContinueMillis(3600 * 1000);
+            }
+
+            function setCaptureUncaughtException() {
+                anysdk.setCaptureUncaughtException(true);
+            }
+
+            function logError() {
+                anysdk.logError("1234", "abcd");
+            }
+
+            function setAccount() {
+                anysdk.setAccount({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function onChargeRequest() {
+                anysdk.onChargeRequest({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function onChargeSuccess() {
+                anysdk.onChargeSuccess("hello");
+            }
+
+            function onChargeFail() {
+                anysdk.onChargeFail({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function onChargeOnlySuccess() {
+                anysdk.onChargeOnlySuccess({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function onPurchase() {
+                anysdk.onPurchase({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function onUse() {
+                anysdk.onUse({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function onReward() {
+                anysdk.onReward({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function startLevel() {
+                anysdk.startLevel({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function finishLevel() {
+                anysdk.finishLevel('Level 101');
+            }
+
+            function failLevel() {
+                anysdk.failLevel({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function startTask() {
+                anysdk.startTask({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function finishTask() {
+                anysdk.finishTask("task 102");
+            }
+
+            function failTask() {
+                anysdk.failTask({
+                    roleId: "123456",
+                    roleName: "test"
+                });
+            }
+
+            function share() {
+                anysdk.share({
+                    title: "Test Title",
+                    titleUrl: "http://sharesdk.cn",
+                    site: "ShareSDK",
+                    siteUrl: "http://sharesdk.cn",
+                    comment: "Test Comment",
+                    text: "Test Text.",
+                });
+            }
+
+            function isAdTypeSupported() {
+                anysdk.isAdTypeSupported(function() {
+                    alert('supported');
+                }, function() {
+                    alert('not supported');
+                }, 'AD_TYPE_FULLSCREEN');
+            }
+
+            function preloadAds() {
+                anysdk.preloadAds('AD_TYPE_BANNER');
+            }
+
+            function showAds() {
+                anysdk.showAds('AD_TYPE_BANNER');
+            }
+
+            function hideAds() {
+                anysdk.hideAds('AD_TYPE_BANNER');
+            }
+
+            function queryPoints() {
+                anysdk.queryPoints(function(points) {
+                    alert('points: ' + points);
+                }, function() {
+
+                });
+            }
+
+            function spendPoints() {
+                anysdk.spendPoints(100);
+            }
+            
+        </script>
+    </body>
+</html>
