@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.anysdk"
     version="0.0.1">
-    <name></name>
+    <name>AnySDK* Cordova Plugin</name>
     <description>AnySDK Cordova Plugin</description>
     <keywords>anysdk, mobile</keywords>
     <author>Wenxi Zhu</author>
