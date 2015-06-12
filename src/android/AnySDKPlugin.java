@@ -74,6 +74,9 @@ public class AnySDKPlugin extends CordovaPlugin {
     this.activity = cordova.getActivity();
     this.webView = webView;
 
+    // Register the onActivityResult callback.
+    cordova.setActivityResultCallback(this);
+
     // Will be used in registerActivityLifecycleCallbacks().
     final Activity cordovaActivity = this.activity;
     final Application application = this.activity.getApplication();
