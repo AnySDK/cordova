@@ -3,7 +3,6 @@
 ## 简介
 - AnySDK-Cordova-Plugin是基于AnySDK的Java接口来实现的Cordova插件。
 - 它将AnySDK Java接口封装成了JavaScript接口（接口名称和参数和Java基本一致， 系统回调封装成了JavaScript事件。Cordova应用开发者在安装了这个插件以后，就能通过JavaScript接口来调用AnySDK的服务了。
-- 目前使用的AnySDK版本是AnySDK_Framework_Java1.4。
 - 目前这个插件仅支持Android。后续版本会加入对IOS的支持。
 
 
@@ -31,7 +30,22 @@ Cordova项目的创建和插件的安装基于[Cordova CLI](http://cordova.apach
 
 
 ## Introduction 
-This plugin is for Cordova app to access the AnySDK service. It wraps the AnySDK's Java APIs, and exposes JavaScript APIs to Cordova developers.
-AnySDK is a free service which provides unified interfaces to access 80+ 3rd-party servcies, including Ads, IAP, Statistic, SNS and Push Notification.
+- This plugin is for Cordova app to access the AnySDK service. It wraps the AnySDK's Java APIs, and exposes JavaScript APIs to Cordova developers.
+- AnySDK is a free service which provides unified interfaces to access 80+ 3rd-party servcies, including Ads, IAP, Statistic, SNS and Push Notification.
+- Currently the plugin supports Android only. iOS Support will be added later.
+
+## Prerequisites
+1. [node.js](https://nodejs.org/).
+2. Cordova-CLI:  `npm install -g cordova`.
+3. plugman: `npm install -g plugman`.
+
+## Install the plugin
+`plugman install --platform android --project <dir-to-project>/platforms/android --plugin <url-to-AnySDK-plugin> --variable ANYSDK_APPKEY=<ANYSDK_APPKEY> --variable ANYSDK_APPSECRET=<ANYSDK_APPSECRET> --variable ANYSDK_PRIVATEKEY=<ANYSDK_PRIVATEKEY> --variable ANYSDK_OAUTHSERVER=<ANYSDK_OAUTHSERVER>`
+
+This will install the plugin, and dependencies in your app.
+
+
+## Important
+To install in the Intel® XDK, remember the emulator and App Preview (on-device-testing) will not work with 3rd-party plugins(yet!). These plugins were created and supported by thired-parties. Please be sure to read each plugin's documentation and license prior to uploading and using them.
 
 
