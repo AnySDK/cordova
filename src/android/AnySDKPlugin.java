@@ -737,10 +737,10 @@ public class AnySDKPlugin extends CordovaPlugin {
       place = ToolBarPlaceEnum.kToolBarTopLeft;
     } else if (position.equals("TOPRIGHT")) {
       place = ToolBarPlaceEnum.kToolBarTopRight;
-    } else if (position.equals("LEFTMID")) {
-      place = ToolBarPlaceEnum.kToolBarLeftMid;
-    } else if (position.equals("RIGHTMID")) {
-      place = ToolBarPlaceEnum.kToolBarRightMid;
+    } else if (position.equals("MIDLEFT")) {
+      place = ToolBarPlaceEnum.kToolBarMidLeft;
+    } else if (position.equals("MIDRIGHT")) {
+      place = ToolBarPlaceEnum.kToolBarMidRight;
     } else if (position.equals("BOTTOMLEFT")) {
       place = ToolBarPlaceEnum.kToolBarBottomLeft;
     } else if (position.equals("BOTTOMRIGHT")) {
