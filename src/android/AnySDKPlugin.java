@@ -465,6 +465,24 @@ public class AnySDKPlugin extends CordovaPlugin {
       }
 
       return true;
+    } else if (action.equals("getPluginId")) {
+      ArrayList<String> idArrayList = AnySDKIAP.getInstance()
+          .getPluginId();
+      
+      JSONArray array = new JSONArray();
+      
+      for (int i = 0 ; i < idArrayList.size(); i++) {
+        array.put(idArrayList.get(i));
+      }
+      
+      if (array.length() >= 0) {
+        callbackContext.success(array);
+      } else {
+        callbackContext.error("Fail to get order id.");
+      }
+      
+      return true;
+      
     } else if (action.equals("logEvent")) {
       String eventId = args.getString(0);
       Map<String, String> paramMap = getMap(args, 1);
@@ -798,13 +816,17 @@ public class AnySDKPlugin extends CordovaPlugin {
       return;
     }
 
-    String pluginId = idArrayList.get(0);
+    String pluginId = idArrayList.get(index);
 
     AnySDKIAP.getInstance().payForProduct(pluginId, data);
   }
 
   private String getOrderId(String pluginId) {
     return AnySDKIAP.getInstance().getOrderId(pluginId);
+  }
+
+  private ArrayList<String> getPluginId() {
+    return AnySDKIAP.getInstance().getPluginId();
   }
 
   private void logEvent(String eventId, Map<String, String> paramMap) {
