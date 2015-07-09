@@ -76,8 +76,16 @@ module.exports = {
 		exec(null, null, 'AnySDK', 'payForProduct', [index, productionInfo]);
 	},
 
+	getPluginId: function(successCallback, errorCallback) {
+		exec(successCallback, errorCallback, 'AnySDK', 'getPluginId', []);
+	},
+
 	getOrderId: function(successCallback, errorCallback, pluginId) {
 		exec(successCallback, errorCallback, 'AnySDK', 'getOrderId', [pluginId]);
+	},
+
+	resetPayState: function() {
+		exec(null, null, 'AnySDK', 'resetPayState', []);
 	},
 
 	// Analytics
