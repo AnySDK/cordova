@@ -1,51 +1,46 @@
-# AnySDK Cordova Plugin
+## AnySDK Plugin 简介
 
-## 简介
-- AnySDK-Cordova-Plugin是基于AnySDK的Java接口来实现的Cordova插件。
-- 它将AnySDK Java接口封装成了JavaScript接口（接口名称和参数和Java基本一致， 系统回调封装成了JavaScript事件。Cordova应用开发者在安装了这个插件以后，就能通过JavaScript接口来调用AnySDK的服务了。
-- 目前这个插件仅支持Android。后续版本会加入对IOS的支持。
+-	AnySDK Plugin作为一个第三方Cordova插件，旨在让Cordova应用能使用AnySDK的服务。它封装了AnySDK提供的Java接口，同时开放JavaScript接口给Cordova开发者调用。
+-	作为一个免费的互联网服务，AnySDK为开发者提供了统一的接口来访问超过80个第三方服务，涵盖了广告、应用内置支付、统计、社交和推送等种类。
+-	当前AnySDK plugin仅支持Android平台。iOS平台的支持将在后续版本中加入。
+-	在您使用此插件及AnySDK服务时，可能需要受制于第三方的权利要求及符合其相应条款和条件，而非受Intel为XDK设置的条款和条件的限制。Intel对于此插件及AnySDK服务不承担责任。
 
+## 预安装设置
+1. [node.js](https://nodejs.org/).
+2. Cordova-CLI:  `npm install -g cordova`.
+3. plugman: `npm install -g plugman`.
 
-## 安装
-Cordova项目的创建和插件的安装基于[Cordova CLI](http://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html#The%20Command-Line%20Interface)和[Plugman](http://cordova.apache.org/docs/en/4.0.0/plugin_ref_plugman.md.html#Using%20Plugman%20to%20Manage%20Plugins) , 下面将详细介绍整个安装流程。
+## 通过Cordova CLI安装
+`plugman install --platform android --project <dir-to-project>/platforms/android --plugin <url-to-AnySDK-plugin> --variable ANYSDK_APPKEY=<ANYSDK_APPKEY> --variable ANYSDK_APPSECRET=<ANYSDK_APPSECRET> --variable ANYSDK_PRIVATEKEY=<ANYSDK_PRIVATEKEY> --variable ANYSDK_OAUTHSERVER=<ANYSDK_OAUTHSERVER>`
 
-在正式创建Cordova项目前：
+上述命令将会安装AnySDK plugin和相关数据依赖到您的应用。
 
-1. 下载并安装[node.js](https://nodejs.org/).
-2. 安装Cordova-CLI:  `npm install -g cordova`.
-3. 安装plugman: `npm install -g plugman`.
+## 在Intel® XDK中安装
+如欲在Intel® XDK中安装和使用AnySDK plugin, 请按照[documentation](https://software.intel.com/en-us/xdk/docs/adding-third-party-plugins-to-your-xdk-cordova-app)中"Including Third-Party Plugins"章节所描述的步骤进行操作。
 
-创建Cordova项目并安装插件：
+**警告：** 谨记，在Intel® XDK中，到目前为止，并非所有第三方插件都能在emulator和App Preview (真机测试)中调试。这些插件都是由第三方所创建和维护。在上传和使用这些第三方插件之前，请务必浏览每一份第三方插件的文档并接受相关授权许可。
 
-1. 创建空项目：运行`cordova create <folder-name> <package-name> <project-name>` ，其中，folder-name用来指定项目文件名；package-name用来指定包名；project-name用来指定项目名。
-例如：`cordova create AnySDKCordovaPluginSample com.intel.anysdkplugin AnySDK-Cordova-Plugin-Sample`
-2. 添加平台：`cordova platform add android`。目前该插件只支持Android平台。
-3. 将AnySDK-Cordova-Plugin中"test"目录下的文件复制到刚才创建的Cordova项目的“www”目录下：“test”目录中保存了用于测试AnySDK插件JavaScript接口的用例。
-4. Build项目：命令行cd到Cordova项目的根目录，运行`cordova build`。
-5. 安装AnySDK插件: 运行`plugman install --platform android --project <dir-to-project>/platforms/android --plugin <dir-to-AnySDK-plugin> --variable ANYSDK_APPKEY=<ANYSDK_APPKEY> --variable ANYSDK_APPSECRET=<ANYSDK_APPSECRET> --variable ANYSDK_PRIVATEKEY=<ANYSDK_PRIVATEKEY> --variable ANYSDK_OAUTHSERVER=<ANYSDK_OAUTHSERVER>`, 安装插件。
-例如：`plugman install --platform android --project platforms/android/ --plugin ../AnySDK-Cordova-Plugin/ --variable ANYSDK_APPKEY="aa" --variable ANYSDK_APPSECRET="bb" --variable ANYSDK_PRIVATEKEY="cc" --variable ANYSDK_OAUTHSERVER="dd"`
+## Introduction to AnySDK Plugin
+- This third party plugin allows the Cordova app to access the AnySDK service.  It wraps the AnySDK's Java APIs, and exposes JavaScript APIs to Cordova developers. 
 
-## 测试
-将刚才创建的项目导入Eclipse中，就可以在模拟器或者Android设备上运行并测试AnySDK的功能。上面的安装步骤3已经把自动化测试工程和AnySDK接口的使用范例安装到你的项目中。可以参考这些范例，来学习如何调用AnySDK的JavaScript接口。
+- AnySDK is a free service which provides unified interfaces to access 80+ 3rd-party services, including Ads, IAP, Statistic, SNS and Push Notification.
+- Currently the AnySDK plugin supports Android only. iOS Support will be added later.
 
-
-## Introduction 
-- This plugin is for Cordova app to access the AnySDK service. It wraps the AnySDK's Java APIs, and exposes JavaScript APIs to Cordova developers.
-- AnySDK is a free service which provides unified interfaces to access 80+ 3rd-party servcies, including Ads, IAP, Statistic, SNS and Push Notification.
-- Currently the plugin supports Android only. iOS Support will be added later.
+- Your use of this plugin and the AnySDK service may be subject to the third party’s rights and their terms and conditions and not Intel’s Terms and Conditions for XDK.  Intel is not liable for this plugin and for the AnySDK service.
 
 ## Prerequisites
 1. [node.js](https://nodejs.org/).
 2. Cordova-CLI:  `npm install -g cordova`.
 3. plugman: `npm install -g plugman`.
 
-## Install the plugin
+## Install via Cordova CLI
 `plugman install --platform android --project <dir-to-project>/platforms/android --plugin <url-to-AnySDK-plugin> --variable ANYSDK_APPKEY=<ANYSDK_APPKEY> --variable ANYSDK_APPSECRET=<ANYSDK_APPSECRET> --variable ANYSDK_PRIVATEKEY=<ANYSDK_PRIVATEKEY> --variable ANYSDK_OAUTHSERVER=<ANYSDK_OAUTHSERVER>`
 
-This will install the plugin, and dependencies in your app.
+This will install the AnySDK plugin, and dependencies in your app.
 
+## Install in Intel® XDK
+To install the AnySDK plugin in the Intel® XDK, please follow the part "Including Third-Party Plugins" in the [documentation](https://software.intel.com/en-us/xdk/docs/adding-third-party-plugins-to-your-xdk-cordova-app). 
 
-## Important
-To install in the Intel® XDK, remember the emulator and App Preview (on-device-testing) will not work with 3rd-party plugins(yet!). These plugins were created and supported by thired-parties. Please be sure to read each plugin's documentation and license prior to uploading and using them.
+**Caution:** Remember in the Intel® XDK, the emulator and App Preview (on-device-testing) may not work with all 3rd-parties plugins (yet!). These plugins were created and supported by third-parties. Please be sure to read each third party plugin's documentation and accept the applicable license prior to uploading and using such third party plugins.
 
 
