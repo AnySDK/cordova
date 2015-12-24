@@ -26,7 +26,7 @@
 - AnySDK is a free service which provides unified interfaces to access 80+ 3rd-party services, including Ads, IAP, Statistic, SNS and Push Notification.
 - Currently the AnySDK plugin supports Android only. iOS Support will be added later.
 
-- Your use of this plugin and the AnySDK service may be subject to the third party’s rights and their terms and conditions and not Intel’s Terms and Conditions for XDK.  Intel is not liable for this plugin and for the AnySDK service.
+- Your use of this plugin and the AnySDK service may be subject to the third party’s rights and their terms and conditions and not Intel’s Terms and Conditions for Intel® XDK.  Intel is not liable for this plugin and for the AnySDK service.
 
 ## Prerequisites
 1. [node.js](https://nodejs.org/).
